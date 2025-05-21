@@ -1,0 +1,13 @@
+[theme]
+primaryColor="#6A0DAD" # Ungu
+backgroundColor="#F0F2F6"
+secondaryBackgroundColor="#E0E0EF"
+textColor="#262730"
+font="sans serif"
+
+[logger]
+level = "info" # Bisa diganti "error" atau "warning" untuk mengurangi log Streamlit
+
+[server]
+# headless = true # Aktifkan jika menjalankan di server tanpa GUI dan ingin akses dari jaringan
+# enableCORS = false # Biasanya tidak perlu diubah

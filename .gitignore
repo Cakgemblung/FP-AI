@@ -1,0 +1,81 @@
+# Python Byte-compiled / Optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports (jika Anda akan menambahkannya nanti)
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook checkpoints (jika Anda menggunakannya untuk eksplorasi)
+.ipynb_checkpoints
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+venv_faceapp/ # Nama spesifik venv Anda
+venv_app/     # Alternatif nama venv jika Anda pernah pakai
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# VS Code specific settings/cache
+.vscode/
+
+# DeepFace model cache (Opsional, jika Anda tidak ingin ini terlacak jika path-nya di dalam proyek)
+# Ini biasanya disimpan di luar proyek (di ~/.deepface/models/),
+# jadi baris di bawah ini mungkin tidak diperlukan kecuali Anda memindahkannya.
+# .deepface/models/
+
+# File data mentah atau besar yang tidak ingin di-commit (jika ada)
+# data/raw/
+# data/large_files/
+
+# File sementara atau log aplikasi (jika ada yang dibuat)
+*.log
+*.tmp
+*.temp
