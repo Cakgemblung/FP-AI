@@ -1,5 +1,6 @@
 streamlit
 Pillow
 deepface
-tensorflow==2.16.1
-tf-keras
+numpy
+opencv-python
+tensorflow
