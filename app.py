@@ -115,7 +115,7 @@ for key, default_value in SESSION_KEYS_DEFAULTS.items():
 
 
 # --- Tampilan Utama Aplikasi ---
-st.markdown("<h1 class='app-title'>🎭 Analisis Wajah Komprehensif 🖼️</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='app-title'>🎭 Analisis Wajah Komprehensif 🖼</h1>", unsafe_allow_html=True)
 # Gunakan class CSS baru untuk deskripsi
 st.markdown("<p class='app-description-centered'>Unggah gambar wajah untuk analisis mendalam: umur, emosi, gender, ras, dan uji similaritas dengan berbagai konfigurasi.</p>", unsafe_allow_html=True)
 st.markdown("<hr class='styled-hr'>", unsafe_allow_html=True)
@@ -137,7 +137,7 @@ def reset_all_on_setting_change():
 
 # --- Kontrol di Sidebar (Sama) ---
 with st.sidebar:
-    st.markdown("## ⚙️ Pengaturan Analisis")
+    st.markdown("## ⚙ Pengaturan Analisis")
     models = ["VGG-Face", "Facenet", "Facenet512", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
     detectors = ['opencv', 'ssd', 'dlib', 'mtcnn', 'retinaface', 'mediapipe']
     distance_metrics = ["cosine", "euclidean", "euclidean_l2"]
@@ -145,7 +145,7 @@ with st.sidebar:
     st.selectbox("Detektor Wajah:", detectors, key="selected_detector", on_change=reset_all_on_setting_change)
     st.selectbox("Metrik Jarak (Similaritas):", distance_metrics, key="selected_distance_metric", on_change=reset_all_on_setting_change)
     st.markdown("---")
-    st.markdown("## 🖼️ Unggah Gambar Asli")
+    st.markdown("## 🖼 Unggah Gambar Asli")
     def handle_file_upload(img_prefix, uploader_key):
         reset_specific_image_states(img_prefix)
         uploaded_file = st.session_state[uploader_key]
@@ -168,7 +168,7 @@ with st.sidebar:
     analyze_button = st.button("🚀 Analisis & Prediksi Sekarang!", type="primary", use_container_width=True, disabled=analyze_button_disabled)
     if analyze_button: st.session_state.analysis_button_clicked = True
     st.markdown("---")
-    st.info(f"Konf: *{st.session_state.selected_model}, *{st.session_state.selected_detector}*, *{st.session_state.selected_distance_metric}**.")
+    st.info(f"Konf: {st.session_state.selected_model}, *{st.session_state.selected_detector}, {st.session_state.selected_distance_metric}*.")
 
 # --- Logika Tombol Analisis (Sama) ---
 if st.session_state.analysis_button_clicked:
@@ -189,8 +189,8 @@ def display_attributes_section(attributes_data, image_number_str):
         elif attributes_data.get("data") and len(attributes_data["data"]) > 0:
             face_data = attributes_data["data"][0]
             age, emotion, gender, race = face_data.get('age','N/A'), face_data.get('dominant_emotion','N/A').capitalize(), face_data.get('dominant_gender','N/A').capitalize(), face_data.get('dominant_race','N/A').capitalize()
-            st.markdown(f"*Umur:* {age} | *Emosi:* {emotion}")
-            st.markdown(f"*Gender:* {gender} | *Ras:* {race}")
+            st.markdown(f"Umur: {age} | Emosi: {emotion}")
+            st.markdown(f"Gender: {gender} | Ras: {race}")
             if len(attributes_data["data"]) > 1: st.caption(f"(Info untuk wajah pertama dari {len(attributes_data['data'])} wajah)")
         else: st.info(f"Atribut Gbr {image_number_str}: Data tidak valid atau wajah tidak terdeteksi.")
 
@@ -261,7 +261,7 @@ with main_cols[1]:
 # ... (Kode ini tidak berubah signifikan dari versi sebelumnya)
 if st.session_state.img1_cropped_bytes and st.session_state.img2_cropped_bytes:
     st.markdown("<hr class='styled-hr'>", unsafe_allow_html=True)
-    st.markdown("<h2 class='section-title'>⚖️ Hasil Analisis Similaritas</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-title'>⚖ Hasil Analisis Similaritas</h2>", unsafe_allow_html=True)
     results_placeholder_bottom = st.container()
     with results_placeholder_bottom:
         if st.session_state.similarity_result:
@@ -273,12 +273,12 @@ if st.session_state.img1_cropped_bytes and st.session_state.img2_cropped_bytes:
                 if verified: st.markdown(f"<div class='success-message'>✅ Wajah Terverifikasi Mirip! (Distance: {dist:.4f} ≤ Threshold: {thres:.2f})</div>", unsafe_allow_html=True)
                 else: st.markdown(f"<div class='warning-message'>❌ Tidak Mirip. (Distance: {dist:.4f} > Threshold: {thres:.2f})</div>", unsafe_allow_html=True)
                 with st.expander("Detail Konfigurasi Similaritas"):
-                    st.markdown(f"- *Model:* {model}\n- *Detektor Awal:* {st.session_state.selected_detector}\n- *Metrik:* {metric}")
+                    st.markdown(f"- Model: {model}\n- Detektor Awal: {st.session_state.selected_detector}\n- Metrik: {metric}")
         elif st.session_state.analysis_button_clicked: st.info("Proses similaritas belum menghasilkan data atau gagal.")
 elif st.session_state.analysis_button_clicked and (st.session_state.img1_bytes_original or st.session_state.img2_bytes_original):
     st.markdown("<hr class='styled-hr'>", unsafe_allow_html=True)
-    st.markdown("<h2 class='section-title'>⚖️ Hasil Analisis Similaritas</h2>", unsafe_allow_html=True)
-    st.info("Analisis similaritas memerlukan *dua* wajah yang berhasil di-crop.")
+    st.markdown("<h2 class='section-title'>⚖ Hasil Analisis Similaritas</h2>", unsafe_allow_html=True)
+    st.info("Analisis similaritas memerlukan dua wajah yang berhasil di-crop.")
 if not st.session_state.analysis_button_clicked and not st.session_state.img1_bytes_original and not st.session_state.img2_bytes_original:
     st.markdown("<hr class='styled-hr'>", unsafe_allow_html=True)
     st.info("👋 Selamat datang! Silakan unggah gambar dan pilih pengaturan, lalu klik tombol analisis.")
