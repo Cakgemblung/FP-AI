@@ -51,7 +51,7 @@ streamlit run app.py
 ```
 Aplikasi akan tersedia di `http://localhost:8501` di browser Anda.
 
-### 5. Deaktivasi Virtual Environment (Jika Selesai)
+### 5. Deaktivasi Virtual Environment
 ```bash
 deactivate
 ```
